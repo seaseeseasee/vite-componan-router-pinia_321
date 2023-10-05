@@ -84,5 +84,5 @@ export const menuStore = defineStore('menu', () => {
     }
   ])
 
-  return { menu_list }
+  return { menu_list,menuStore }
 })
