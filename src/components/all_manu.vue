@@ -30,14 +30,17 @@
   import Head_shop from '../components/Head_shop.vue';
   import { menuStore } from '../stores/menu.js';
   import { useRoute } from 'vue-router';
+  import { addToCart } from '../stores/counter.js'; 
   
   const route = useRoute();
   const menu_store = menuStore();
   const itemIndex = route.query.itemIndex;
   const selectedItem = ref(menu_store.menu_list[itemIndex]);
   
+
+
   const handleAddToCart = (item) => {
-  menu_store.addToCart(item);
+  addToCart(item);
 }
 
   </script>
