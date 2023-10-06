@@ -1,7 +1,7 @@
 <script setup>
-import Head_shop from './Head_shop.vue';
+import Head_shop from '../components/Head_shop.vue';
 import { cart } from '../stores/counter.js';
-import { computed } from 'vue';
+import { computed} from 'vue';
 import { addOrder } from '../stores/order_cal';
 
 const totalPrice = (item) => computed(() => item.price * item.quantity);
@@ -25,10 +25,13 @@ const removeFromCart = (itemToRemove) => {
 
 const confirmOrder = () => {
   addOrder(cart.value);
+
   cart.value = [];
 };
 
+
 </script>
+
 <template>
      <Head_shop></Head_shop> 
 
@@ -40,14 +43,14 @@ const confirmOrder = () => {
           <h1 class="fw-normal mb-0 text-black">ตะกร้า</h1>
         </div>
 
-        <div class="card rounded-3 mb-4" v-for="(item, index) in cart.value" :key="index">
+        <div class="card rounded-3 mb-4" v-for="(item, index) in cart" :key="index">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
                 <img :src="item.img" class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <span>รายการ {{ index + 1 }} </span>
+                <span>รายการ{{ index + 1 }} </span>
                 
                 <p class="lead fw-normal mb-2">{{ item.name }}</p>
                 <p><span class="text-muted">ราคา : {{item.price}} บาท</span></p>
